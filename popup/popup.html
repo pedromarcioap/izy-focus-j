@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izy Focus C</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="timer-display">25:00</h1>
+        <input type="text" id="task-input" placeholder="Qual é a sua meta?">
+        <div class="buttons">
+            <button id="start-button">Iniciar</button>
+            <button id="pause-button" style="display: none;">Pausar</button>
+            <button id="reset-button">Resetar</button>
+        </div>
+        <div class="gamification">
+            <img src="../assets/tree.png" alt="Árvore">
+            <span id="trees-planted-count">0</span>
+        </div>
+        <div class="links">
+            <a href="../stats/stats.html" target="_blank">Ver Estatísticas</a>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
