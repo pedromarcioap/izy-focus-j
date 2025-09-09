@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estatísticas - Izy Focus C</title>
+    <link rel="stylesheet" href="stats.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Estatísticas de Foco</h1>
+
+        <div class="summary">
+            <div class="summary-item">
+                <h2>Sessões Concluídas</h2>
+                <p id="total-sessions">0</p>
+            </div>
+            <div class="summary-item">
+                <h2>Tempo Total de Foco</h2>
+                <p id="total-focus-time">0h 0m</p>
+            </div>
+            <div class="summary-item">
+                <h2>Plantas no Jardim</h2>
+                <p id="total-plants">0</p>
+            </div>
+            <div class="summary-item">
+                <h2>Sequência Perfeita</h2>
+                <p id="perfect-streak">0</p>
+            </div>
+            <div class="summary-item">
+                <h2>Taxa de Sucesso</h2>
+                <p id="success-rate">0%</p>
+            </div>
+        </div>
+
+        <h2>Histórico de Sessões</h2>
+        <div class="history-container">
+            <table id="history-table">
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Tarefa</th>
+                        <th>Duração</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody id="history-table-body">
+                    <!-- As linhas do histórico serão inseridas aqui -->
+                </tbody>
+            </table>
+        </div>
+        <button id="clear-history-button">Limpar Histórico</button>
+    </div>
+    <script src="stats.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izy Focus C</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <a href="../stats/stats.html" target="_blank" class="header-button" title="Estatísticas">📊</a>
+            <span class="app-title">Izy Focus C</span>
+            <a href="../options/options.html" target="_blank" class="header-button" title="Configurações">⚙️</a>
+        </header>
+
+        <main class="content">
+            <div id="garden" class="garden-area">
+                <!-- 🌱🌳 serão inseridos aqui -->
+            </div>
+            <div id="timer-display" class="timer-display">25:00</div>
+            <div class="task-area">
+                <input type="text" id="task-input" placeholder="Qual é a sua meta?">
+            </div>
+        </main>
+
+        <footer class="controls-footer">
+            <div class="hyperfocus-control">
+                <label for="hyperfocus-toggle" class="hyperfocus-label">Bloquear Sites</label>
+                <label class="switch">
+                    <input type="checkbox" id="hyperfocus-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div id="action-buttons" class="action-buttons">
+                <button id="start-button">Iniciar Foco</button>
+                <button id="pause-button" style="display: none;">Pausar</button>
+                <button id="reset-button" style="display: none;">Resetar</button>
+            </div>
+        </footer>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

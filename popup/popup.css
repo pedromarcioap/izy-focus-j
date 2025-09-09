@@ -1,0 +1,155 @@
+:root {
+    --background: #F8F9FA;
+    --surface: #FFFFFF;
+    --primary: #4A90E2;
+    --primary-dark: #357ABD;
+    --text-main: #333333;
+    --text-light: #777777;
+    --border: #EAECEF;
+    --success: #7ED321;
+    --garden-bg: #E9F5E9;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    width: 340px;
+    background-color: var(--background);
+    margin: 0;
+    color: var(--text-main);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 500px; /* Give the popup a fixed height for a consistent layout */
+    background-color: var(--surface);
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border);
+}
+
+.app-title {
+    font-weight: 600;
+}
+
+.header-button {
+    font-size: 1.2rem;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px;
+}
+
+.garden-area {
+    width: 100%;
+    height: 120px;
+    background-color: var(--garden-bg);
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 8px;
+    font-size: 1.8rem;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+}
+
+.timer-display {
+    font-size: 5rem;
+    font-weight: 700;
+    margin: auto 0; /* Center vertically in the remaining space */
+}
+
+.task-area {
+    width: 100%;
+}
+
+#task-input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    border-bottom: 2px solid var(--border);
+    padding: 8px 0;
+    font-size: 1.1rem;
+    text-align: center;
+    transition: border-color 0.3s;
+}
+
+#task-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.controls-footer {
+    padding: 15px;
+    border-top: 1px solid var(--border);
+    background-color: var(--background);
+}
+
+.hyperfocus-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.hyperfocus-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Re-using the same switch style */
+.switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 24px; }
+.slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: var(--success); }
+input:checked + .slider:before { transform: translateX(20px); }
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    flex-grow: 1;
+    font-size: 1rem;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+#start-button {
+    background-color: var(--primary);
+    color: white;
+}
+#start-button:hover {
+    background-color: var(--primary-dark);
+}
+
+#pause-button, #reset-button {
+    background-color: var(--border);
+    color: var(--text-main);
+}
+#pause-button:hover, #reset-button:hover {
+    background-color: #dcdfe4;
+}
