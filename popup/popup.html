@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izy Focus C</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../options/options.html" target="_blank" class="header-link" title="Configurações">⚙️</a>
+            <h2>Izy Focus C</h2>
+            <a href="../stats/stats.html" target="_blank" class="header-link" title="Estatísticas">📊</a>
+        </div>
+
+        <div id="garden">
+            <!-- As árvores 🌳 serão inseridas aqui pelo JS -->
+        </div>
+
+        <h1 id="timer-display">25:00</h1>
+
+        <div class="task-container">
+            <input type="text" id="task-input" placeholder="Sua meta de foco...">
+        </div>
+
+        <div class="controls">
+            <div class="hyperfocus-mode">
+                <label class="switch">
+                    <input type="checkbox" id="hyperfocus-toggle" checked>
+                    <span class="slider"></span>
+                </label>
+                <label for="hyperfocus-toggle" class="switch-label">Modo Hiperfoco (Bloquear Sites)</label>
+            </div>
+            <div class="buttons">
+                <button id="start-button">Iniciar</button>
+                <button id="pause-button" style="display: none;">Pausar</button>
+                <button id="reset-button">Resetar</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
