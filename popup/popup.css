@@ -1,0 +1,192 @@
+:root {
+    --background: #f4f7f6;
+    --surface: #ffffff;
+    --primary: #58a6ff;
+    --primary-dark: #3a8dff;
+    --text-main: #24292e;
+    --text-light: #6a737d;
+    --border: #e1e4e8;
+    --success: #34d058;
+    --garden-bg: #f0fdf4;
+    --garden-border: #bbf7d0;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    width: 320px;
+    background-color: var(--background);
+    margin: 0;
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 480px;
+    background-color: var(--surface);
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+.app-title {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    color: var(--text-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon-button:hover {
+    background-color: var(--background);
+}
+.icon-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.timer-display {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+
+.timer-input-area {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 8px 0 16px 0;
+}
+#duration-input {
+    width: 60px;
+    border: none;
+    border-bottom: 2px solid var(--border);
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 4px;
+}
+#duration-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+.timer-input-area span {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+#task-input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 8px 0;
+    font-size: 1rem;
+    text-align: center;
+    color: var(--text-light);
+}
+#task-input:focus {
+    outline: none;
+    color: var(--text-main);
+}
+
+.footer {
+    padding: 16px;
+    border-top: 1px solid var(--border);
+    background-color: var(--background);
+    flex-shrink: 0;
+}
+
+.hyperfocus-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.hyperfocus-label {
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+/* Switch from before */
+.switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 24px; }
+.slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: var(--success); }
+input:checked + .slider:before { transform: translateX(20px); }
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+button {
+    flex-grow: 1;
+    font-size: 1rem;
+    padding: 10px 16px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+button.button-primary {
+    background-color: var(--primary);
+    color: white;
+}
+button.button-primary:hover {
+    background-color: var(--primary-dark);
+}
+button.button-secondary {
+    background-color: var(--surface);
+    color: var(--text-main);
+    border-color: var(--border);
+}
+button.button-secondary:hover {
+    background-color: var(--background);
+}
+
+.garden-area {
+    width: 100%;
+    min-height: 40px;
+    background-color: var(--garden-bg);
+    border: 1px solid var(--garden-border);
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 4px;
+    font-size: 1.2rem;
+    overflow-y: auto;
+}

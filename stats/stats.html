@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estatísticas - Izy Focus</title>
+    <link rel="stylesheet" href="stats.css">
+</head>
+<body>
+    <div class="container">
+        <header class="stats-header">
+            <h1>Suas Estatísticas</h1>
+            <p>Acompanhe seu progresso e seus hábitos de foco.</p>
+        </header>
+
+        <section class="summary-grid">
+            <div class="summary-card">
+                <h3>Sessões Concluídas</h3>
+                <p id="total-sessions">0</p>
+            </div>
+            <div class="summary-card">
+                <h3>Tempo de Foco</h3>
+                <p id="total-focus-time">0h 0m</p>
+            </div>
+            <div class="summary-card">
+                <h3>Plantas no Jardim</h3>
+                <p id="total-plants">0</p>
+            </div>
+            <div class="summary-card">
+                <h3>Sequência Perfeita</h3>
+                <p id="perfect-streak">0</p>
+            </div>
+            <div class="summary-card wide">
+                <h3>Taxa de Sucesso (Sessões Perfeitas)</h3>
+                <div class="progress-bar-container">
+                    <div id="success-progress-bar" class="progress-bar"></div>
+                </div>
+                <span id="success-rate">0%</span>
+            </div>
+        </section>
+
+        <section class="history-section">
+            <div class="history-header">
+                <h2>Histórico de Sessões</h2>
+                <button id="clear-history-button" class="button-danger">Limpar Histórico</button>
+            </div>
+            <div id="history-list" class="history-list">
+                <!-- Session cards will be inserted here by JS -->
+            </div>
+        </section>
+    </div>
+    <script src="stats.js"></script>
+</body>
+</html>

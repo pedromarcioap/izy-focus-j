@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izy Focus C</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <button id="stats-button" class="icon-button" title="Estatísticas">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/></svg>
+            </button>
+            <span class="app-title">Izy Focus</span>
+            <button id="options-button" class="icon-button" title="Configurações">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V15Z"/></svg>
+            </button>
+        </header>
+
+        <main class="content">
+            <div id="timer-display" class="timer-display">25:00</div>
+            <div class="timer-input-area">
+                <input type="number" id="duration-input" value="25" min="1" max="180">
+                <span>minutos</span>
+            </div>
+            <input type="text" id="task-input" placeholder="Qual é a sua meta?">
+        </main>
+
+        <footer class="footer">
+            <div class="hyperfocus-control">
+                <label for="hyperfocus-toggle" class="hyperfocus-label">Bloquear Sites</label>
+                <label class="switch">
+                    <input type="checkbox" id="hyperfocus-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div id="action-buttons" class="action-buttons">
+                <button id="start-button" class="button-primary">Iniciar Foco</button>
+                <button id="pause-button" class="button-secondary" style="display: none;">Pausar</button>
+                <button id="reset-button" class="button-secondary" style="display: none;">Resetar</button>
+            </div>
+            <div id="garden" class="garden-area"></div>
+        </footer>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
