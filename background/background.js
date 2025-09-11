@@ -34,22 +34,22 @@ function pauseTimer() {
     }
 }
 
+// Resets the timer state. Can optionally take a new duration.
 function resetTimer(newDuration) {
     pauseTimer();
-    // If a new duration is provided (e.g., from the dropdown), update focusDuration
+    // If a new duration is provided (e.g., from the dropdown), update focusDuration.
+    // Otherwise, it keeps the existing focusDuration.
     if (newDuration) {
         timerState.focusDuration = newDuration;
     }
     timerState.timeLeft = timerState.focusDuration;
     timerState.mode = 'focus';
     timerState.sessionIsPristine = true;
-    broadcastStateUpdate();
 }
 
 function handleTimerEnd() {
     const previousMode = timerState.mode;
     const wasPristine = timerState.sessionIsPristine;
-    pauseTimer();
 
     if (previousMode === 'focus') {
         const session = {
@@ -71,52 +71,43 @@ function handleTimerEnd() {
                 gardenPlants: newGarden,
                 sessionHistory: newHistory
             }, () => {
-                resetTimer(); // Reset to the current focus duration for the break
+                // After saving, reset the timer for the break and broadcast the new state.
+                resetTimer(); // Resets to the current focusDuration for the upcoming break state change.
+                timerState.mode = 'break';
+                timerState.timeLeft = timerState.breakDuration; // Set to break duration.
+                broadcastStateUpdate();
             });
         });
 
         let notificationMessage = `Bom trabalho em '${timerState.task}'! Você cultivou uma ${wasPristine ? 'árvore' : 'muda'}.`;
-        chrome.notifications.create({
-            type: 'basic',
-            iconUrl: '../icons/icon128.png',
-            title: 'Sessão de Foco Concluída!',
-            message: notificationMessage,
-            priority: 2
-        });
+        chrome.notifications.create({ type: 'basic', iconUrl: '../icons/icon128.png', title: 'Sessão de Foco Concluída!', message: notificationMessage, priority: 2 });
 
     } else { // End of a break session
-        resetTimer();
-        chrome.notifications.create({
-            type: 'basic',
-            iconUrl: '../icons/icon128.png',
-            title: 'Hora de Focar!',
-            message: 'Sua pausa acabou. Vamos voltar ao trabalho!',
-            priority: 2
-        });
+        resetTimer(); // Reset back to a new focus session.
+        broadcastStateUpdate();
+        chrome.notifications.create({ type: 'basic', iconUrl: '../icons/icon128.png', title: 'Hora de Focar!', message: 'Sua pausa acabou. Vamos voltar ao trabalho!', priority: 2 });
     }
 }
 
 // --- Communication ---
 function broadcastTimeUpdate() {
-    chrome.runtime.sendMessage({ type: 'TIME_UPDATE', timeLeft: timerState.timeLeft }, () => {
-        if (chrome.runtime.lastError) {}
-    });
+    chrome.runtime.sendMessage({ type: 'TIME_UPDATE', timeLeft: timerState.timeLeft }, () => { if (chrome.runtime.lastError) {} });
 }
 
 function broadcastStateUpdate() {
     chrome.storage.local.get(['gardenPlants'], (result) => {
         const gardenPlants = result.gardenPlants || [];
-        chrome.runtime.sendMessage({ type: 'STATE_UPDATE', state: { ...timerState, gardenPlants } }, () => {
-            if (chrome.runtime.lastError) {}
-        });
+        chrome.runtime.sendMessage({ type: 'STATE_UPDATE', state: { ...timerState, gardenPlants } }, () => { if (chrome.runtime.lastError) {} });
     });
 }
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     switch (message.command) {
         case 'start':
+            // This is a new session if the timer is not currently running.
             if (!timerState.isRunning) {
                 timerState.sessionIsPristine = true;
+                // If a duration is passed, it means the user just selected it.
                 if (message.duration) {
                     timerState.focusDuration = message.duration;
                     timerState.timeLeft = message.duration;
@@ -129,10 +120,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             break;
         case 'pause':
             pauseTimer();
+            broadcastStateUpdate();
             sendResponse(timerState);
             break;
         case 'reset':
-            resetTimer(message.duration); // Pass optional new duration
+            resetTimer(message.duration); // Pass optional new duration.
+            broadcastStateUpdate(); // Ensure UI is always updated after a manual reset.
             sendResponse(timerState);
             break;
         case 'getState':

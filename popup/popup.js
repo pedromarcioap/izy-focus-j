@@ -87,10 +87,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     durationSelect.addEventListener('change', () => {
-        const newDurationInSeconds = parseInt(durationSelect.value, 10) * 60;
-        // When duration changes, we want to tell the background to adopt this new time
-        // This will effectively be a "soft reset" of the timer to the new duration
-        chrome.runtime.sendMessage({ command: 'reset', duration: newDurationInSeconds });
+        // When the user changes the selection, just update the visual timer display
+        // if the timer is not currently running. The actual state change will happen
+        // in the background only when the "Start" button is clicked.
+        chrome.runtime.sendMessage({ command: 'getState' }, (state) => {
+            if (!state.isRunning) {
+                const newDurationInSeconds = parseInt(durationSelect.value, 10) * 60;
+                renderTimer(newDurationInSeconds);
+            }
+        });
     });
 
     // --- Communication with Background ---
