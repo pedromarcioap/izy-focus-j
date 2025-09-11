@@ -189,4 +189,15 @@ button.button-secondary:hover {
     gap: 4px;
     font-size: 1.2rem;
     overflow-y: auto;
+    margin-top: 12px;
+}
+
+.made-by-footer {
+    width: 100%;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    padding-top: 12px;
+    margin-top: 12px;
+    border-top: 1px solid var(--border);
 }

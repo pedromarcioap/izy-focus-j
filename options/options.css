@@ -98,3 +98,10 @@ section {
 .remove-button:hover {
     background-color: #c50f05;
 }
+
+.made-by-footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #888;
+}
