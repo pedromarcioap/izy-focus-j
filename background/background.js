@@ -48,6 +48,8 @@ function resetTimer(newDuration) {
 }
 
 function handleTimerEnd() {
+    pauseTimer(); // Stop the interval timer immediately to prevent race conditions.
+
     const previousMode = timerState.mode;
     const wasPristine = timerState.sessionIsPristine;
 
